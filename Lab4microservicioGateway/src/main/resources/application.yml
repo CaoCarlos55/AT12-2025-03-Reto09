@@ -1,0 +1,25 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: gateway-service
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      # AQUÍ DEFINIMOS LA RUTA MANUALMENTE
+      routes:
+        - id: ruta-saludo
+          uri: lb://GREETING-MICROSERVICE   # <--- El nombre EXACTO que sale en Eureka
+          predicates:
+            - Path=/saludo/** # <--- La palabra clave que usaremos en el navegador
+          filters:
+            - StripPrefix=1                 # <--- Quita "/saludo" antes de pasar la petición
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true

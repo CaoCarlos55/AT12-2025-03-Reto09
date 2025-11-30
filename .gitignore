@@ -1,0 +1,40 @@
+# --- Maven (Directorios de construcción) ---
+target/
+**/target/
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# --- Logs y Archivos Temporales ---
+*.log
+*.tmp
+
+# --- IDEs (Archivos de configuración personal) ---
+# IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+
+# Eclipse
+.classpath
+.project
+.settings/
+bin/
+
+# VS Code
+.vscode/
+
+# --- Spring Boot ---
+HELP.md
+mvnw
+mvnw.cmd
+.mvn/
+
+# --- Sistema Operativo ---
+.DS_Store
+Thumbs.db

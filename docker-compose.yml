@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  eureka-server:
+    image: eureka
+    restart: always
+    container_name: eureka
+    ports:
+      - '8761:8761'
+    networks:
+      - dockernetflix-network
+
+  gateway-service:
+    image: gateway
+    restart: always
+    container_name: gateway
+    ports:
+      - '8080:8080' # El Gateway escucha en el 8080 (mapeado al 7000 en el PDF, pero usamos 8080 en el código)
+    depends_on:
+      - eureka-server
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+    networks:
+      - dockernetflix-network
+
+  greeting-microservice:
+    image: greetmicroservice
+    restart: always
+    container_name: greetmicroservice
+    depends_on:
+      - eureka-server
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+    networks:
+      - dockernetflix-network
+
+networks:
+  dockernetflix-network:
