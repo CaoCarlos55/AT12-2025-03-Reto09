@@ -4,7 +4,7 @@
 
 Esta práctica represento un acercamiento a la configuración de microservicios con Spring Cloud y Docker. Con esta practica se comprendio y soluciono varios desafíos técnicos de la implementación:
 
-Una de las activadades mas significativa surgió al configurar el **API Gateway**. Inicialmente, la inclusión errónea de la dependencia `spring-boot-starter-web` me generó conflictos al intentar levantar un servidor Tomcat en un entorno que requería ser reactivo (Netty). Resolver esto me permitió comprender la arquitectura no bloqueante sobre la que se construye Spring Cloud Gateway, diferenciándola de las aplicaciones web tradicionales MVC.
+Una de las activadades mas significativa surgió al configurar el **API Gateway**. Inicialmente, la inclusión errónea de la dependencia `spring-boot-starter-webmvc` me generó conflictos al intentar levantar un servidor Tomcat en un entorno que requería ser reactivo (Netty), entonces lo tuve que cambiar por `spring-boot-starter-web`. Resolver esto me permitió comprender la arquitectura no bloqueante sobre la que se construye Spring Cloud Gateway, diferenciándola de las aplicaciones web tradicionales MVC.
 
 Asimismo, la etapa de despliegue observe la importancia de la precisión en la **Infraestructura como Código**. Los errores de construcción en Docker, derivados de discrepancias en los nombres de los artefactos `.jar` generados por Maven y la sensibilidad de la indentación en los archivos YAML, demostraron que en una arquitectura de microservicios, la configuración es tan importante como el código fuente. Esto reforzó la importancia de mantener una alineación estricta entre el ciclo de vida de construcción con maven y el de despliegue en docker.
 
